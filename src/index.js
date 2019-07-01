@@ -4,15 +4,38 @@ import './index.css';
 
 
 
+/*
+comments inside html <button> ***comment*** </button>
+  ***comment*** gets rendered 
+
+because mixing JSX inside javascript html better put comments 
+outside at toplevel
+
+
+*/
+
 class Square extends React.Component {
-  render() {
-    return (
-	    <button className="square" onClick={function(){alert("click !");}}> 
-            { this.props.value }
-      </button>
-    );
-  }
+    constructor(props) {
+	super(props);  // call superclass
+	this.state = {
+	    value: null,
+	};
+    }
+
+    
+    render() {
+	return (
+	    // arrow function syntax 
+		<button
+	    className="square"
+	    onClick={ () => this.setState({value: 'X'})}
+		>
+		{ this.state.value }
+	    </button>
+	);
+    }
 }
+
 
 
 
