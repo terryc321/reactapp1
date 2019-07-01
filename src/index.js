@@ -38,37 +38,54 @@ class Square extends React.Component {
 
 
 
+/*
+added constructor props to Board 
+call super(props) on any React.Component before anything else
+typical inheritance oop stuff
 
+make an 3x3 board or 9 cell array 
+[null,null,null,null,null,null,null,null,null]
+
+squares  : [null,null,null,null,null,null,null,null,null]
+
+*/
 
 class Board extends React.Component {
-  renderSquare(i) {
-      return <Square value={i * 2}/>;
-  }
+    constructor(props) {
+	super(props);
+	this.state = {
+	    squares: Array(9).fill(null),
+	};
+    }
 
-  render() {
-    const status = 'Next player: X';
+    renderSquare(i) {
+	return <Square value={i}/>;
+    }
 
-    return (
-      <div>
-        <div className="status">{status}</div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
-    );
-  }
+    render() {
+	const status = 'Next player: X';
+
+	return (
+		<div>
+		<div className="status">{status}</div>
+		<div className="board-row">
+		{this.renderSquare(0)}
+            {this.renderSquare(1)}
+            {this.renderSquare(2)}
+            </div>
+		<div className="board-row">
+		{this.renderSquare(3)}
+            {this.renderSquare(4)}
+            {this.renderSquare(5)}
+            </div>
+		<div className="board-row">
+		{this.renderSquare(6)}
+            {this.renderSquare(7)}
+            {this.renderSquare(8)}
+            </div>
+		</div>
+	);
+    }
 }
 
 
